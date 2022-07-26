@@ -51,7 +51,7 @@ jobs:
       # gera o plano
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color -var="appId=${{ secrets.APPID }}" -var="password=${{ secrets.PASSWORD }}"
+        run: terraform plan -no-color -var="appId=${{ secrets.AZURE_AD_CLIENT_ID }}" -var="password=${{ secrets.AZURE_AD_CLIENT_SECRET }}"
         #run: terraform plan -no-color
         continue-on-error: true
       # Aplicar terraform

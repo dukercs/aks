@@ -12,15 +12,6 @@ provider "azurerm" {
   features {}
 }
 
-# resource "azurerm_resource_group" "default" {
-#   name     = "wordpressrg"
-#   location = "West US 3"
-
-#   tags = {
-#     environment = "Wordpress"
-#   }
-# }
-
 resource "azurerm_container_registry" "default" {
   name                = "dukercsmcr1"
   resource_group_name = var.resourcegroup
