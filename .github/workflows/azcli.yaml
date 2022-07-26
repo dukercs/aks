@@ -33,7 +33,7 @@ jobs:
       # Login no azure
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE2 }}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
       # Instala o terraform
       - uses: hashicorp/setup-terraform@v2
       # Transforma os arquivos de configuração para formato canonico
