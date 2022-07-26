@@ -1,4 +1,15 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name  = var.resourcegroup
+    storage_account_name = "aksterraform17"
+    container_name       = "tfstateactions"
+    key                  = "tfstateactions.tfstate"
+  }
+}
+ 
+
 provider "azurerm" {
+  version = "~>2.0"
   features {}
 }
 

@@ -21,15 +21,21 @@ jobs:
       - name: Run a one-line script
         run: echo Iniciando teste azure login 
       # Variaveis de ambiente 
-      - name: Configurar variaveis de ambiente
-        run: |
-          export ARM_CLIENT_ID=${{ secrets.APPID }}
-          export ARM_CLIENT_SECRET=${{ secrets.PASSWORD }}
-          export ARM_TENANT_ID=${{ secrets.TENANT }}
-          export AZURE_CLIENT_ID=${{ secrets.APPID }}
-          export AZURE_CLIENT_SECRET=${{ secrets.PASSWORD }}
-          export AZURE_TENANT_ID=${{ secrets.TENANT }}
-          export ARM_SUBSCRIPTION_ID=${{ secrets.SUBSID }}
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSID }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+
+      # - name: Configurar variaveis de ambiente
+      #   run: |
+      #     export ARM_CLIENT_ID=${{ secrets.APPID }}
+      #     export ARM_CLIENT_SECRET=${{ secrets.PASSWORD }}
+      #     export ARM_TENANT_ID=${{ secrets.TENANT }}
+      #     export AZURE_CLIENT_ID=${{ secrets.APPID }}
+      #     export AZURE_CLIENT_SECRET=${{ secrets.PASSWORD }}
+      #     export AZURE_TENANT_ID=${{ secrets.TENANT }}
+      #     export ARM_SUBSCRIPTION_ID=${{ secrets.SUBSID }}
       # Login no azure
       - uses: azure/login@v1
         with:
@@ -52,8 +58,7 @@ jobs:
       # gera o plano
       - name: Terraform Plan
         id: plan
-        # run: terraform plan -no-color -var="appId=${{ secrets.APPID }}" -var="password=${{ secrets.PASSWORD }}"
-        run: terraform plan -no-color 
+        run: terraform plan -no-color -var="appId=${{ secrets.APPID }}" -var="password=${{ secrets.PASSWORD }}"
         continue-on-error: true
       # Aplicar terraform
       # - name: Terraform Apply
