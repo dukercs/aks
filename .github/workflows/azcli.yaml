@@ -37,9 +37,9 @@ jobs:
       #     export AZURE_TENANT_ID=${{ secrets.TENANT }}
       #     export ARM_SUBSCRIPTION_ID=${{ secrets.SUBSID }}
       # Login no azure
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      # - uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.AZURE_CREDENTIALS }}
       # Instala o terraform
       - uses: hashicorp/setup-terraform@v2
       # Transforma os arquivos de configuração para formato canonico
@@ -58,7 +58,8 @@ jobs:
       # gera o plano
       - name: Terraform Plan
         id: plan
-        run: terraform plan -no-color -var="appId=${{ secrets.APPID }}" -var="password=${{ secrets.PASSWORD }}"
+        #run: terraform plan -no-color -var="appId=${{ secrets.APPID }}" -var="password=${{ secrets.PASSWORD }}"
+        run: terraform plan -no-color
         continue-on-error: true
       # Aplicar terraform
       # - name: Terraform Apply
