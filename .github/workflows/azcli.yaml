@@ -20,7 +20,16 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Iniciando teste azure login 
-
+      # Variaveis de ambiente 
+      - name: Configurar variaveis de ambiente
+        run: |
+          export ARM_CLIENT_ID=${{ secrets.APPID }}
+          export ARM_CLIENT_SECRET=${{ secrets.PASSWORD }}
+          export ARM_TENANT_ID=${{ secrets.TENANT }}
+          export AZURE_CLIENT_ID=${{ secrets.APPID }}
+          export AZURE_CLIENT_SECRET=${{ secrets.PASSWORD }}
+          export AZURE_TENANT_ID=${{ secrets.TENANT }}
+          export ARM_SUBSCRIPTION_ID=${{ secrets.SUBSID }}
       # Login no azure
       - uses: azure/login@v1
         with:
