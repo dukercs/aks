@@ -1,6 +1,6 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = var.resourcegroup
+    resource_group_name  = "wordpressrg"
     storage_account_name = "aksterraform17"
     container_name       = "tfstateactions"
     key                  = "tfstateactions.tfstate"
@@ -9,7 +9,6 @@ terraform {
  
 
 provider "azurerm" {
-  version = "~>2.0"
   features {}
 }
 
