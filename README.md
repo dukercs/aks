@@ -1,7 +1,7 @@
 # Criação de cluster **AKS** com **Terraform<br />**
 
-### Criando cluster com base na documentação e ajustando de acordo com o necessário<br />
-### Aqui será para deploy de um wordpress.<br /><br /><br />
+Criando cluster com base na documentação e ajustando de acordo com o necessário<br />
+Aqui será para deploy de um wordpress.<br /><br /><hr />
 ## Dados:<br />
 ### Conteiner Registry: <b>dukercsmcr1</b><br />
 ### AKS Nome do cluster: **wordpress-aks<br />**
